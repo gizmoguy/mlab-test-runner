@@ -17,10 +17,10 @@ def main():
             subprocess.check_call(['/ndt/src/web100clt', '--name', nearest_data['fqdn']])
             all_sites = json.load(
                 urllib2.urlopen('https://mlab-ns.appspot.com/ndt?policy=all'))
-            us_sites = [site for site in all_sites if site['country'] == 'US']
-            us_site = random.choice(us_sites)
-            logging.info('Testing to %s', us_site['fqdn'])
-            subprocess.check_call(['/ndt/src/web100clt', '--name', us_site['fqdn']])
+            nz_sites = [site for site in all_sites if site['country'] == 'NZ']
+            nz_site = random.choice(nz_sites)
+            logging.info('Testing to %s', nz_site['fqdn'])
+            subprocess.check_call(['/ndt/src/web100clt', '--name', nz_site['fqdn']])
         except urllib2.URLError as ue:
             logging.error('Failed to access MLabNS: %s', ue.message)
         except subprocess.CalledProcessError as cpe:
